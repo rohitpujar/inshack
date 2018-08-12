@@ -4,7 +4,7 @@ $name=$_GET["user"];
 $pa=$_GET["pass"];
 $con=mysqli_connect("localhost", "root", "root", "hackathon");
 
-mysqli_select_db($con,"hackathon") or die ("DATABASE not available");
+mysqli_select_db($con,"hackathon") or die ("DATABASE not availabel");
 $sql="select userName from users where userName = '$name' && userPassword='$pa'";
 
 $result=mysqli_query($con,$sql);
@@ -23,6 +23,7 @@ $_SESSION['guest']=0;
 #header("location:retrieve_teacher.php?username=$myusername");
     //session_start();
   $_SESSION['username']=$name;
+  @require 'uploadFile.html';
 }
 else {
 echo '<form action="singleuserlogin.html" method="post" >';
