@@ -2,10 +2,10 @@
 // Make sure an ID was passed
 if(isset($_GET['id'])) {
 // Get the ID
-    $id = intval($_GET['id']);
+    $fileId = intval($_GET['id']);
  
     // Make sure the ID is in fact a valid ID
-    if($id <= 0) {
+    if($fileId <= 0) {
         die('The ID is invalid!');
     }
     else {
@@ -19,7 +19,8 @@ if(isset($_GET['id'])) {
         $query = "
             SELECT `fileId`, `fileName`, `tags`, `fileBlob`
             FROM `fileDetails`
-            WHERE `id` = {$fileId}";
+            WHERE `fileId` = {$fileId}";
+	error_log("Query is: $query");
         $result = $dbLink->query($query);
  
         if($result) {

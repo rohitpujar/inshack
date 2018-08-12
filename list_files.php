@@ -34,7 +34,7 @@ if($result) {
                     <td>{$row['fileName']}</td>
                     <td>{$row['userId']}</td>
                     <td>{$row['tags']}</td>
-                    <td><a href='get_file.php?id={$row['id']}'>Download</a></td>
+                    <td><a href='get_file.php?id={$row['fileId']}'>Download</a></td>
                 </tr>";
         }
  
