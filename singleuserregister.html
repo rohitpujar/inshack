@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<!--
+	Intensify by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>hackathoned- Welcome to the registration page.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script>
+                    function validate(field, query)
+                                    {
+                                                xmlhttp = new XMLHttpRequest(); // Creating Object
+
+                                                xmlhttp.onreadystatechange = function() // Checking if readyState changes
+                                                {
+                                                            if (xmlhttp.readyState!=4 && xmlhttp.status==200) // Validation Under Process
+                                                            {
+                                                                        document.getElementById(field).innerHTML = "Validating..";
+                                                            }
+                                                            else if (xmlhttp.readyState==4 && xmlhttp.status==200) // Validation Completed
+                                                            {
+                                                                        document.getElementById(field).innerHTML = xmlhttp.responseText;
+                                                            }
+                                                            else // If an error is encountered
+                                                            {
+                                                                        document.getElementById(field).innerHTML = "Unknown Error Occurred. <a href='indexmain.html'>Reload</a> the page.";
+                                                            }
+                                                }
+                                                xmlhttp.open("GET","check.php?field="+field+"&query="+query, false);
+												
+                                                xmlhttp.send();
+                                    
+									}
+
+    function validatebox2() {
+    var fn2 = document.getElementById("fn2").value;
+    var fn3 = document.getElementById("fn3").value;
+    if(fn2!=fn3)
+    {
+        document.getElementById("error_fn2").innerHTML ="Passwords Do not Match!";
+        document.getElementById("error_fn2").style.color = "red";
+        document.getElementById("fn2").value ="";
+        document.getElementById("fn3").value ="";
+    }
+    else if(fn2.length<6)
+    {
+        document.getElementById("error_fn2").innerHTML ="Password should be  minimum 6 characters";
+        document.getElementById("error_fn2").style.color = "red";
+        document.getElementById("fn2").value ="";
+        document.getElementById("fn3").value ="";
+    }
+    else
+    {
+        document.getElementById("error_fn2").innerHTML ="Passwords Match!";
+        document.getElementById("error_fn2").style.color = "green";
+    }
+}
+	function hello()
+	{
+		alert ("hello");
+	}
+
+      </script>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<nav class="left">
+					<a href="#menu"><span>Menu</span></a>
+				</nav>
+				<a href="index.html" class="logo">hackathoned</a>
+				
+			</header>
+
+		<!-- Menu -->
+			<ul class="links">
+					<li><a href="index.html">Home</a></li>
+                                        <li><a href="singleuserlogin.html">Log in as a Single User</a></li>
+                                        <li><a href="familyuserloginfinal.html">Log in as a Family User</a></li>
+                                        <li><a href="corporateuserlogin.html">Log in as a Corporate User</a></li>
+					<li><a href="aboutus.html">About Us</a></li>
+				</ul>
+				
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<form action="dbregister.php" method="post" enctype="dbregister.php">
+		<div class="container">
+		<section class="register">
+        <a href="indexmain.html">HOME</a>
+		<h1>Register and get your own number!</h1>
+    
+		<div class="reg_section personal_info">
+		<h3>User ID</h3>
+		<!--<input type="text" name="user" placeholder="Your Desired Username" onchange="validate('user', this.value)" required/> 
+		<label id="user">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>*/-->
+		
+		<input type="text" name="email"  placeholder="Your E-mail Address" onchange="validate('email', this.value)" required/> 
+        
+		<label id="email">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+		</div>
+		<div class="reg_section password">
+		
+		<h3>Your Password</h3>
+		<input type="password" name="pass" id="fn2" value="" placeholder="Your Password" required>
+		<label id="dummy">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+		
+		<input type="password" name="confirm" id="fn3" value="" placeholder="Confirm Password" onblur="validatebox2()" required>
+		<label id="error_fn2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+		
+		<h3> Social Security Number or Passport Number</h3>
+		<input type="text" name="ssn"  placeholder="Your SSN/Passport Number" required/>
+		
+		<h3> What's your good name?</h3>
+		<input type="text" name="uname"  placeholder="Your Name" onchange="validate('user',this.value)" required/>
+		<label id="user">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+		
+		<h3> Address Line 1</h3>
+		<input type="text" name="addr1"  placeholder="Where do you stay?" required/>
+		
+		<h3> Address Line 2</h3>
+		<input type="text" name="addr2"  placeholder="This is an optional field."/>
+		
+		<h3> City Name</h3>
+		<input type="text" name="city"  placeholder="City Name" required/>
+		
+		<h3> Zip Code </h3>
+		<input type="text" name="zipcode"  placeholder="Zip Code" required/>
+		
+		<h3> State </h3>
+		<input type="text" name="state"  placeholder="State" required/>
+		
+		<h3> Country </h3>
+		<input type="text" name="country"  placeholder="Country" required/>
+		
+		
+		<h3>Plan</h3>
+			<select name="phonenumber">
+			<?php
+
+				$link = mysqli_connect("localhost", "root", "", "hackathon");
+
+				// Check connection
+				if($link === false){
+				die("ERROR: Could not connect. " . mysqli_connect_error());
+				}
+
+				// Attempt insert query execution
+
+
+				$sql =mysqli_query($link, "select PlanName from availableplans;"	);
+
+				while ($row = $sql->fetch_assoc()){
+	
+			?>
+			<option value=<?php echo $row['PlanName']; ?>><?php echo $row['PlanName']; ?></option>
+			<?php
+				// close while loop 
+				}
+				?>
+			</select>
+		
+		
+		<h3> Phone Number </h3>
+		<input type="text" name="phno" id="phno" placeholder="This will be your phone number" maxlength="10" onchange="validate('phno',this.value)" required/>
+		</br>
+		<input type="button" name="Choose" value="Choose from Available"/>
+		
+		<h3> Card Number </h3>
+		<input type="text" name="cardno"  placeholder="Card Number" maxlength="16" required/>
+		
+		
+		<h3> CVV or Security Number </h3>
+		<input type="text" name="cvvno"  placeholder="CVV/Security Number" maxlength="3" required/>
+		
+		<h3> Expiry Date </h3>
+		<select name="month" id="month">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+		</select>
+		
+		<h3> Year of Expiry </h3>
+		<select name="years" id="years">
+		<option value="2017">2017</option>
+		<option value="2018">2018</option>
+		<option value="2019">2019</option>
+		<option value="2020">2020</option>
+		<option value="2021">2021</option>
+		<option value="2022">2022</option>
+		</select>
+		</div>
+		
+		
+		
+		
+          
+		<div class="reg_section password">
+		<p> <div> <label id="error_fn5"></label> </div> 
+		</div>
+		<p class="terms">
+        <label>
+           By clicking SignUp you agree to the <a href="privacy.html">privacy policy</a>  and <a href="terms.html">terms of service</a>.
+        </label>
+		</p>
+		<p class="submit"><input type="submit" name="commit" value="Sign Up" ></p>
+      
+      </form>
+			</section>
+		</div>
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<h2>Get In Touch</h2>
+					<ul class="actions">
+						<li><span class="icon fa-phone"></span> <a href="#">(704) 497-7365</a></li>
+						<li><span class="icon fa-envelope"></span> <a href="#">enthusiasts@hackathon.com</a></li>
+						<li><span class="icon fa-map-marker"></span>9547 University Terrace, 1701 Colonial Grand, 8437 Compatable Way, Charlotte, North Carolina</li>
+					</ul>
+				</div>
+				<div>
+					Website Designed with the help of <a href="https://templated.co">'TEMPLATED'</a>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<!--
+	Intensify by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>hackathoned- Welcome to the registration page.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	<script>
+                    
+    function validatebox2() {
+    var fn2 = document.getElementById("fn2").value;
+    var fn3 = document.getElementById("fn3").value;
+    if(fn2!=fn3)
+    {
+        document.getElementById("error_fn2").innerHTML ="Passwords Do not Match!";
+        document.getElementById("error_fn2").style.color = "red";
+        document.getElementById("fn2").value ="";
+        document.getElementById("fn3").value ="";
+    }
+    else if(fn2.length<6)
+    {
+        document.getElementById("error_fn2").innerHTML ="Password should be  minimum 6 characters";
+        document.getElementById("error_fn2").style.color = "red";
+        document.getElementById("fn2").value ="";
+        document.getElementById("fn3").value ="";
+    }
+    else
+    {
+        document.getElementById("error_fn2").innerHTML ="Passwords Match!";
+        document.getElementById("error_fn2").style.color = "green";
+    }
+}
+      </script>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<nav class="left">
+					<a href="#menu"><span>Menu</span></a>
+				</nav>
+				<a href="index.html" class="logo">hackathoned</a>
+				
+			</header>
+
+		<!-- Menu -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+                                        <li><a href="singleuserlogin.html">Log in as a Single User</a></li>
+                                        <li><a href="familyuserloginfinal.html">Log in as a Family User</a></li>
+                                        <li><a href="corporateuserlogin.html">Log in as a Corporate User</a></li>
+					<li><a href="aboutus.html">About Us</a></li>
+				</ul>
+				
+			</nav>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+<form action="loginphpfinal.php" method="get">
+  <div class="container">
+    <section class="register">
+        <a href="index.html">HOME</a>
+      <h1>USER LOGIN</h1>
+     
+      <div class="reg_section personal_info">
+      <h3>Username</h3>
+      <input type="text" name="user" id="user" placeholder="Your email-id"/> 
+              <label id="error_fn"></label>
+    
+      <div class="reg_section password">
+      <h3>Password</h3>
+      <input type="password" name="pass" id="pass" placeholder="Your password">
+    
+      <label id="error_fn2"></label>
+      </div>
+          
+      <div class="reg_section password">
+          <p> <div> <label id="error_fn5"></label> </div> </p> 
+      </div>
+      <!--<p class="terms">
+        <label>
+          <input type="checkbox" name="remember_me" id="remember_me">Remember me.
+           
+        </label>
+      </p>-->
+      <p class="submit"><input type="submit" name="login" value="Login">&nbsp;&nbsp;&nbsp;<a href="singleuserregister.php">New User ??</a></p>
+      
+      
+      </form>
+    </section>
+  </div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<h2>Get In Touch</h2>
+					<ul class="actions">
+						<li><span class="icon fa-phone"></span> <a href="#">(704) 497-7365</a></li>
+						<li><span class="icon fa-envelope"></span> <a href="#">enthusiasts@hackathon.com</a></li>
+						<li><span class="icon fa-map-marker"></span>9547 University Terrace, 1701 Colonial Grand, 8437 Compatable Way, Charlotte, North Carolina</li>
+					</ul>
+				</div>
+				<div>
+					Website Designed with the help of <a href="https://templated.co">'TEMPLATED'</a>
+				</div>
+			</footer>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
