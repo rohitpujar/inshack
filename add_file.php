@@ -18,10 +18,10 @@ if(isset($_FILES['uploaded_file'])) {
         // Create the SQL query
         $query = "
             INSERT INTO `fileDetails` (
-                `fileId`, `fileName`, `userId`, `tags`, `fileBlob`
+                `fileName`, `userId`, `tags`, `fileBlob`
             )
             VALUES (
-                1, '{$name}', 3, 'tagss','{$data}'
+                 '{$name}', 3, 'tagss','{$data}'
             )";
  
         // Execute the query
