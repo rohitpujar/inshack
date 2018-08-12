@@ -14,6 +14,7 @@ if(isset($_FILES['uploaded_file'])) {
         $mime = $dbLink->real_escape_string($_FILES['uploaded_file']['type']);
         $data = $dbLink->real_escape_string(file_get_contents($_FILES  ['uploaded_file']['tmp_name']));
         $size = intval($_FILES['uploaded_file']['size']);
+        $tags = $_POST["tags"];
  
         // Create the SQL query
         $query = "
@@ -21,7 +22,7 @@ if(isset($_FILES['uploaded_file'])) {
                 `fileName`, `userId`, `tags`, `fileBlob`
             )
             VALUES (
-                 '{$name}', 3, 'tagss','{$data}'
+                 '{$name}', 3, '{$tags}','{$data}'
             )";
  
         // Execute the query

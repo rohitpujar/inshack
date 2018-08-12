@@ -4,13 +4,23 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </head>
 <body>
+<h1> File upload with tags</h1>
     <form action="add_file.php" method="post" enctype="multipart/form-data">
         <input type="file" name="uploaded_file"><br>
         <input type="submit" value="Upload file">
         <input type="text" name="tags">
+        </br>
+        Enter tags: <input type="text" name="tags">
     </form>
     <p>
         <a href="list_files.php">See all files</a>
     </p>
+</br>
+<h1> Search by tags</h1>
+<form action="getFile.php" method="get" enctype="multipart/form-data">
+<input type="text" name="tagsearch">
+<input type="submit" name="search" value"search">
+</form"
+
 </body>
 </html>
