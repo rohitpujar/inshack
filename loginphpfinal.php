@@ -4,7 +4,7 @@ $name=$_GET["user"];
 $pa=$_GET["pass"];
 $con=mysqli_connect("localhost", "root", "root", "hackathon");
 
-mysqli_select_db($con,"hackathon") or die ("DATABASE not availabel");
+mysqli_select_db($con,"hackathon") or die ("DATABASE not available");
 $sql="select userName from users where userName = '$name' && userPassword='$pa'";
 
 $result=mysqli_query($con,$sql);
